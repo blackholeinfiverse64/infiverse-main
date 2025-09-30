@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "../ui/dialog"
-import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 import { Textarea } from "../ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
+import { Building, Palette, User, FileText, Sparkles } from "lucide-react"
 import { useToast } from "../../hooks/use-toast"
 import { api } from "../../lib/api"
 
@@ -64,7 +64,7 @@ export function CreateDepartmentDialog({ open, onOpenChange }) {
     setIsLoading(true)
 
     try {
-      const result = await api.departments.createDepartment({
+      await api.departments.createDepartment({
         ...formData,
         members: [formData.lead], // Initially add the lead as a member
       })
@@ -96,103 +96,185 @@ export function CreateDepartmentDialog({ open, onOpenChange }) {
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange} className="dialog-overlay">
-      <DialogContent className="dialog-content sm:max-w-[525px]">
-        <DialogHeader>
-          <DialogTitle>Create New Department</DialogTitle>
-          <DialogDescription>Add a new department to your workflow management system</DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid gap-2">
-            <Label htmlFor="name">
-              Department Name <span className="text-red-500">*</span>
-            </Label>
-            <Input
-              id="name"
-              placeholder="Enter department name"
-              value={formData.name}
-              onChange={(e) => handleChange("name", e.target.value)}
-            />
-          </div>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="relative backdrop-blur-xl bg-black/80 border border-white/20 shadow-2xl max-w-md mx-auto rounded-2xl overflow-hidden">
+        {/* Electric Particles Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-4 right-6 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-60"></div>
+          <div className="absolute bottom-8 left-8 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-40"></div>
+          <div className="absolute top-20 left-1/3 w-1.5 h-1.5 bg-purple-400 rounded-full animate-bounce opacity-50"></div>
+          <div className="absolute bottom-12 right-1/4 w-1 h-1 bg-cyan-300 rounded-full animate-ping opacity-70"></div>
+        </div>
 
-          <div className="grid gap-2">
-            <Label htmlFor="description">Description</Label>
-            <Textarea
-              id="description"
-              placeholder="Enter department description"
-              className="min-h-[100px]"
-              value={formData.description}
-              onChange={(e) => handleChange("description", e.target.value)}
-            />
-          </div>
+        <div className="relative">
+          {/* Enhanced Header */}
+          <DialogHeader className="mb-6">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-lg blur-sm"></div>
+                <div className="relative w-10 h-10 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 backdrop-blur-md border border-cyan-400/50 rounded-lg flex items-center justify-center">
+                  <Building className="h-5 w-5 text-cyan-300" />
+                  <div className="absolute -top-1 -right-1">
+                    <Sparkles className="h-3 w-3 text-blue-400 animate-pulse" />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <DialogTitle className="text-xl font-bold bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  Create New Department
+                </DialogTitle>
+                <DialogDescription className="text-cyan-200/80 text-sm mt-1">
+                  Add a new department to your workflow management system
+                </DialogDescription>
+              </div>
+            </div>
+          </DialogHeader>
+          {/* Enhanced Form Fields */}
+          <div className="space-y-6">
+            {/* Department Name Field */}
+            <div className="space-y-2">
+              <Label htmlFor="name" className="text-white font-medium flex items-center gap-2">
+                <FileText className="h-4 w-4 text-cyan-400" />
+                Department Name <span className="text-red-400">*</span>
+              </Label>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-lg blur-sm"></div>
+                <Input
+                  id="name"
+                  placeholder="Enter department name"
+                  value={formData.name}
+                  onChange={(e) => handleChange("name", e.target.value)}
+                  className="relative bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-white/50 focus:border-cyan-400/50 focus:ring-cyan-400/30 transition-all duration-300"
+                />
+              </div>
+            </div>
 
-          <div className="grid gap-2">
-            <Label htmlFor="lead">
-              Department Lead <span className="text-red-500">*</span>
-            </Label>
-            <Select value={formData.lead} onValueChange={(value) => handleChange("lead", value)}>
-              <SelectTrigger id="lead">
-                <SelectValue placeholder="Select department lead" />
-              </SelectTrigger>
-              <SelectContent>
-                {users.map((user) => (
-                  <SelectItem key={user.id} value={user.id}>
-                    {user.name}
-                  </SelectItem>
+            {/* Description Field */}
+            <div className="space-y-2">
+              <Label htmlFor="description" className="text-white font-medium flex items-center gap-2">
+                <FileText className="h-4 w-4 text-cyan-400" />
+                Description
+              </Label>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-lg blur-sm"></div>
+                <Textarea
+                  id="description"
+                  placeholder="Enter department description"
+                  className="relative min-h-[100px] bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-white/50 focus:border-cyan-400/50 focus:ring-cyan-400/30 transition-all duration-300 resize-none"
+                  value={formData.description}
+                  onChange={(e) => handleChange("description", e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* Department Lead Field */}
+            <div className="space-y-2">
+              <Label htmlFor="lead" className="text-white font-medium flex items-center gap-2">
+                <User className="h-4 w-4 text-cyan-400" />
+                Department Lead <span className="text-red-400">*</span>
+              </Label>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-lg blur-sm"></div>
+                <Select value={formData.lead} onValueChange={(value) => handleChange("lead", value)}>
+                  <SelectTrigger 
+                    id="lead"
+                    className="relative bg-white/10 backdrop-blur-md border border-white/20 text-white focus:border-cyan-400/50 focus:ring-cyan-400/30 transition-all duration-300"
+                  >
+                    <SelectValue placeholder="Select department lead" className="text-white/50" />
+                  </SelectTrigger>
+                  <SelectContent className="backdrop-blur-md bg-black/80 border border-white/20">
+                    {users.map((user) => (
+                      <SelectItem 
+                        key={user.id} 
+                        value={user.id}
+                        className="text-white hover:bg-white/10 focus:bg-white/10"
+                      >
+                        {user.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {/* Department Color Field */}
+            <div className="space-y-3">
+              <Label htmlFor="color" className="text-white font-medium flex items-center gap-2">
+                <Palette className="h-4 w-4 text-cyan-400" />
+                Department Color
+              </Label>
+              <div className="flex gap-3 flex-wrap">
+                {[
+                  { value: "bg-blue-500", color: "#3b82f6" },
+                  { value: "bg-green-500", color: "#10b981" },
+                  { value: "bg-amber-500", color: "#f59e0b" },
+                  { value: "bg-red-500", color: "#ef4444" },
+                  { value: "bg-purple-500", color: "#a855f7" },
+                  { value: "bg-cyan-500", color: "#06b6d4" },
+                  { value: "bg-indigo-500", color: "#6366f1" },
+                ].map((colorOption) => (
+                  <div key={colorOption.value} className="relative">
+                    <div className={`absolute inset-0 rounded-full blur-sm ${
+                      formData.color === colorOption.value ? 'opacity-60' : 'opacity-0'
+                    } transition-opacity duration-300`} style={{ backgroundColor: colorOption.color }}></div>
+                    <button
+                      type="button"
+                      onClick={() => handleColorSelect(colorOption.value)}
+                      className={`relative w-10 h-10 rounded-full border-2 transition-all duration-300 hover:scale-110 ${
+                        formData.color === colorOption.value
+                          ? 'border-white shadow-lg scale-110'
+                          : 'border-white/30 hover:border-white/60'
+                      }`}
+                      style={{ 
+                        backgroundColor: colorOption.color,
+                        boxShadow: formData.color === colorOption.value 
+                          ? `0 0 20px ${colorOption.color}60, inset 0 2px 4px rgba(0,0,0,0.3)` 
+                          : 'inset 0 2px 4px rgba(0,0,0,0.3)'
+                      }}
+                    />
+                  </div>
                 ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="grid gap-2">
-            <Label htmlFor="color">Department Color</Label>
-            <div className="flex gap-2">
-              <Button
-                type="button"
-                className={`w-8 h-8 rounded-full bg-blue-500 p-0 ${formData.color === "bg-blue-500" ? "ring-2 ring-offset-2 ring-blue-500" : ""}`}
-                onClick={() => handleColorSelect("bg-blue-500")}
-              />
-              <Button
-                type="button"
-                className={`w-8 h-8 rounded-full bg-green-500 p-0 ${formData.color === "bg-green-500" ? "ring-2 ring-offset-2 ring-green-500" : ""}`}
-                onClick={() => handleColorSelect("bg-green-500")}
-              />
-              <Button
-                type="button"
-                className={`w-8 h-8 rounded-full bg-amber-500 p-0 ${formData.color === "bg-amber-500" ? "ring-2 ring-offset-2 ring-amber-500" : ""}`}
-                onClick={() => handleColorSelect("bg-amber-500")}
-              />
-              <Button
-                type="button"
-                className={`w-8 h-8 rounded-full bg-red-500 p-0 ${formData.color === "bg-red-500" ? "ring-2 ring-offset-2 ring-red-500" : ""}`}
-                onClick={() => handleColorSelect("bg-red-500")}
-              />
-              <Button
-                type="button"
-                className={`w-8 h-8 rounded-full bg-purple-500 p-0 ${formData.color === "bg-purple-500" ? "ring-2 ring-offset-2 ring-purple-500" : ""}`}
-                onClick={() => handleColorSelect("bg-purple-500")}
-              />
-              <Button
-                type="button"
-                className={`w-8 h-8 rounded-full bg-cyan-500 p-0 ${formData.color === "bg-cyan-500" ? "ring-2 ring-offset-2 ring-cyan-500" : ""}`}
-                onClick={() => handleColorSelect("bg-cyan-500")}
-              />
-              <Button
-                type="button"
-                className={`w-8 h-8 rounded-full bg-indigo-500 p-0 ${formData.color === "bg-indigo-500" ? "ring-2 ring-offset-2 ring-indigo-500" : ""}`}
-                onClick={() => handleColorSelect("bg-indigo-500")}
-              />
+              </div>
             </div>
           </div>
+          {/* Enhanced Footer */}
+          <DialogFooter className="flex gap-3 pt-6 border-t border-white/10">
+            {/* Cancel Button */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-lg blur-sm"></div>
+              <button
+                type="button"
+                onClick={() => onOpenChange(false)}
+                className="relative px-4 py-2 bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-105 backdrop-blur-md rounded-lg font-medium"
+              >
+                Cancel
+              </button>
+            </div>
+            
+            {/* Create Button */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-lg blur-sm"></div>
+              <button
+                type="submit"
+                onClick={handleSubmit}
+                disabled={isLoading}
+                className="relative px-6 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 border border-cyan-400/30 text-white hover:from-cyan-500/30 hover:to-blue-600/30 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 backdrop-blur-md rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              >
+                {isLoading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Creating...
+                  </>
+                ) : (
+                  <>
+                    <Building className="h-4 w-4" />
+                    Create Department
+                  </>
+                )}
+              </button>
+            </div>
+          </DialogFooter>
         </div>
-        <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
-          </Button>
-          <Button type="submit" onClick={handleSubmit} disabled={isLoading}>
-            {isLoading ? "Creating..." : "Create Department"}
-          </Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   )
