@@ -19,29 +19,43 @@ function Tasks() {
   }
 
   return (
-    <div className={`h-screen flex flex-col space-y-6 overflow-y-auto electric-dashboard transition-all duration-700 ${
+    <div className={`min-h-screen bg-black space-y-8 font-poppins transition-all duration-700 ${
       isHidden 
         ? 'ml-0' 
         : 'ml-80'
-    }`}>
-      {/* Electric Background Particles */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="electric-particles opacity-20"></div>
-        <div className="electric-particles-small opacity-15"></div>
+    } p-4 md:p-6 lg:p-8`}>
+      {/* Enhanced Glassmorphism Background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/5 to-purple-600/10 pointer-events-none"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(6,182,212,0.15),transparent_50%)] pointer-events-none"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(59,130,246,0.1),transparent_70%)] pointer-events-none"></div>
+      
+      {/* Electric Particles */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-20 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-60"></div>
+        <div className="absolute bottom-40 left-16 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-40"></div>
+        <div className="absolute top-60 left-40 w-1.5 h-1.5 bg-purple-400 rounded-full animate-bounce opacity-50"></div>
+        <div className="absolute bottom-20 right-40 w-1 h-1 bg-cyan-300 rounded-full animate-ping opacity-70"></div>
+        <div className="absolute top-40 left-1/4 w-1 h-1 bg-blue-300 rounded-full animate-pulse opacity-50"></div>
+        <div className="absolute bottom-60 right-1/3 w-1.5 h-1.5 bg-purple-300 rounded-full animate-bounce opacity-40"></div>
       </div>
 
-      <div className="relative z-10">
-        <TasksHeader />
-      </div>
-      
-      <div className="flex flex-col md:flex-row gap-6 flex-1 px-4 md:px-6 pb-6 relative z-10">
-        <div className="md:w-1/4 electric-section">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <TaskFilters onFilterChange={handleFilterChange} />
+      <div className="relative z-10 space-y-8">
+        {/* Header Section */}
+        <div className="relative">
+          <TasksHeader />
         </div>
-        <div className="flex-1 electric-section">
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <TasksList filters={filters} />
+        
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Filters Sidebar */}
+          <div className="lg:col-span-1">
+            <TaskFilters onFilterChange={handleFilterChange} />
+          </div>
+          
+          {/* Tasks List */}
+          <div className="lg:col-span-3">
+            <TasksList filters={filters} />
+          </div>
         </div>
       </div>
     </div>

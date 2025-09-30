@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
-import { MoreHorizontal, Eye, Edit, Trash, Loader2, Search, X } from 'lucide-react'
+import { MoreHorizontal, Eye, Edit, Trash, Loader2, Search, X, ListTodo } from 'lucide-react'
 import { TaskDetailsDialog } from "./task-details-dialog"
 import { useToast } from "../../hooks/use-toast"
 import { api } from "../../lib/api"
@@ -85,87 +85,136 @@ function EditTaskDialog({ task, open, onOpenChange }) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange} className="dialog-overlay">
-      <DialogContent className="dialog-content sm:max-w-[525px]">
-        <DialogHeader>
-          <DialogTitle>Edit Task</DialogTitle>
-        </DialogHeader>
-        <form onSubmit={handleSubmit}>
-          <div className="grid gap-4 py-4">
-            <div className="grid gap-2">
-              <Label htmlFor="title">Title</Label>
-              <Input
-                id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-                required
-              />
+      <DialogContent className="sm:max-w-[525px] backdrop-blur-xl bg-black/90 border border-white/20 shadow-2xl">
+        {/* Electric Particles Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10 rounded-lg"></div>
+        <div className="absolute top-1/4 right-1/4 w-20 h-20 bg-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-16 h-16 bg-blue-500/20 rounded-full blur-xl animate-pulse animation-delay-1000"></div>
+
+        <div className="relative">
+          <DialogHeader className="mb-6">
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
+              Edit Task
+            </DialogTitle>
+          </DialogHeader>
+          
+          <form onSubmit={handleSubmit}>
+            <div className="grid gap-6 py-4">
+              <div className="grid gap-3">
+                <Label htmlFor="title" className="text-cyan-300 font-medium">Title</Label>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-lg blur-sm"></div>
+                  <Input
+                    id="title"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    required
+                    className="relative bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:border-cyan-400/50 focus:ring-cyan-400/30"
+                  />
+                </div>
+              </div>
+              
+              <div className="grid gap-3">
+                <Label htmlFor="description" className="text-cyan-300 font-medium">Description</Label>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-lg blur-sm"></div>
+                  <Textarea
+                    id="description"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    className="relative bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:border-cyan-400/50 focus:ring-cyan-400/30"
+                  />
+                </div>
+              </div>
+              
+              <div className="grid gap-3">
+                <Label htmlFor="status" className="text-cyan-300 font-medium">Status</Label>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-lg blur-sm"></div>
+                  <Select
+                    value={formData.status}
+                    onValueChange={(value) => handleSelectChange("status", value)}
+                  >
+                    <SelectTrigger className="relative bg-white/5 border-white/20 text-white focus:border-cyan-400/50 focus:ring-cyan-400/30">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="backdrop-blur-xl bg-black/90 border-white/20">
+                      <SelectItem value="Pending" className="text-white hover:bg-white/10">Pending</SelectItem>
+                      <SelectItem value="In Progress" className="text-white hover:bg-white/10">In Progress</SelectItem>
+                      <SelectItem value="Completed" className="text-white hover:bg-white/10">Completed</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              
+              <div className="grid gap-3">
+                <Label htmlFor="priority" className="text-cyan-300 font-medium">Priority</Label>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-lg blur-sm"></div>
+                  <Select
+                    value={formData.priority}
+                    onValueChange={(value) => handleSelectChange("priority", value)}
+                  >
+                    <SelectTrigger className="relative bg-white/5 border-white/20 text-white focus:border-cyan-400/50 focus:ring-cyan-400/30">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="backdrop-blur-xl bg-black/90 border-white/20">
+                      <SelectItem value="Low" className="text-white hover:bg-white/10">Low</SelectItem>
+                      <SelectItem value="Medium" className="text-white hover:bg-white/10">Medium</SelectItem>
+                      <SelectItem value="High" className="text-white hover:bg-white/10">High</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              
+              <div className="grid gap-3">
+                <Label htmlFor="dueDate" className="text-cyan-300 font-medium">Due Date</Label>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-lg blur-sm"></div>
+                  <Input
+                    id="dueDate"
+                    name="dueDate"
+                    type="date"
+                    value={formData.dueDate}
+                    onChange={handleChange}
+                    className="relative bg-white/5 border-white/20 text-white focus:border-cyan-400/50 focus:ring-cyan-400/30"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="grid gap-2">
-              <Label htmlFor="description">Description</Label>
-              <Textarea
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="status">Status</Label>
-              <Select
-                value={formData.status}
-                onValueChange={(value) => handleSelectChange("status", value)}
-              >
-                <SelectTrigger className="bg-white border border-gray-300 rounded-md shadow-sm">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="z-[70]">
-                  <SelectItem value="Pending">Pending</SelectItem>
-                  <SelectItem value="In Progress">In Progress</SelectItem>
-                  <SelectItem value="Completed">Completed</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="priority">Priority</Label>
-              <Select
-                value={formData.priority}
-                onValueChange={(value) => handleSelectChange("priority", value)}
-              >
-                <SelectTrigger className="bg-white border border-gray-300 rounded-md shadow-sm">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="z-[70]">
-                  <SelectItem value="Low">Low</SelectItem>
-                  <SelectItem value="Medium">Medium</SelectItem>
-                  <SelectItem value="High">High</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="dueDate">Due Date</Label>
-              <Input
-                id="dueDate"
-                name="dueDate"
-                type="date"
-                value={formData.dueDate}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              Cancel
-            </Button>
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : (
-                "Save Changes"
-              )}
-            </Button>
-          </DialogFooter>
-        </form>
+            
+            <DialogFooter className="mt-8 gap-3">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-400/20 to-gray-500/20 rounded-lg blur-sm"></div>
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  onClick={() => onOpenChange(false)}
+                  className="relative bg-white/5 border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300"
+                >
+                  Cancel
+                </Button>
+              </div>
+              
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/40 to-blue-500/40 rounded-lg blur-sm"></div>
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="relative bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white border-0 shadow-lg hover:shadow-cyan-400/25 transition-all duration-300 hover:scale-105"
+                >
+                  {isSubmitting ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    "Save Changes"
+                  )}
+                </Button>
+              </div>
+            </DialogFooter>
+          </form>
+        </div>
       </DialogContent>
     </Dialog>
   )
@@ -326,192 +375,265 @@ export function TasksList({ filters }) {
 
   if (isLoading) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Tasks by Department</CardTitle>
-          <CardDescription>View tasks grouped by department</CardDescription>
-        </CardHeader>
-        <CardContent className="flex justify-center items-center py-10">
-          <div className="flex flex-col items-center gap-2">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p>Loading tasks...</p>
+      <div className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden">
+        {/* Electric Particles Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
+        <div className="absolute top-1/3 right-1/4 w-28 h-28 bg-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
+
+        <div className="relative p-8">
+          <div className="mb-6">
+            <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
+              Tasks by Department
+            </h3>
+            <p className="text-white/70 mt-1">View tasks grouped by department</p>
           </div>
-        </CardContent>
-      </Card>
+
+          <div className="flex justify-center items-center py-16">
+            <div className="flex flex-col items-center gap-4">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/40 to-blue-500/40 rounded-full blur-lg animate-pulse"></div>
+                <Loader2 className="relative h-12 w-12 animate-spin text-cyan-400" />
+              </div>
+              <p className="text-white/80 text-lg">Loading tasks...</p>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 
   if (error) {
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Tasks by Department</CardTitle>
-          <CardDescription>View tasks grouped by department</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="p-4 text-center text-red-500">
-            <p>Error loading tasks: {error}</p>
-            <Button
-              variant="outline"
-              className="mt-4"
-              onClick={() => window.location.reload()}
-            >
-              Try Again
-            </Button>
+      <div className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden">
+        {/* Electric Particles Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-red-400/10 via-orange-500/10 to-red-600/10"></div>
+        <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-red-400/20 rounded-full blur-2xl animate-pulse"></div>
+
+        <div className="relative p-8">
+          <div className="mb-6">
+            <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
+              Tasks by Department
+            </h3>
+            <p className="text-white/70 mt-1">View tasks grouped by department</p>
           </div>
-        </CardContent>
-      </Card>
+
+          <div className="text-center py-12">
+            <div className="backdrop-blur-sm bg-red-500/10 border border-red-400/20 rounded-2xl p-8 inline-block">
+              <p className="text-red-300 text-lg mb-4">Error loading tasks: {error}</p>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-red-400/40 to-orange-500/40 rounded-xl blur-sm"></div>
+                <Button
+                  variant="outline"
+                  className="relative bg-white/10 backdrop-blur-md border border-white/30 hover:border-red-400/50 text-white hover:text-red-300 transition-all duration-300 hover:scale-105"
+                  onClick={() => window.location.reload()}
+                >
+                  Try Again
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 
   return (
     <div className="space-y-6">
-      {/* Search Bar */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Search Tasks</CardTitle>
-          <CardDescription>Search by task name, assignee, department, or description</CardDescription>
-        </CardHeader>
-        <CardContent>
+      {/* Enhanced Search Bar */}
+      <div className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden">
+        {/* Electric Particles Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
+        <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-pulse animation-delay-1000"></div>
+
+        <div className="relative p-6">
+          <div className="mb-4">
+            <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
+              Search Tasks
+            </h3>
+            <p className="text-white/70 mt-1">Search by task name, assignee, department, or description</p>
+          </div>
+
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-            <Input
-              placeholder="Search tasks by name, user, department, or description..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 pr-10"
-            />
-            {searchQuery && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={clearSearch}
-                className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 hover:bg-gray-100"
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            )}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-xl blur-sm"></div>
+            <div className="relative backdrop-blur-sm bg-white/5 border border-white/20 rounded-xl">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-cyan-400 h-5 w-5" />
+              <Input
+                placeholder="Search tasks by name, user, department, or description..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-12 pr-12 bg-transparent border-0 text-white placeholder:text-white/50 focus:ring-2 focus:ring-cyan-400/50 h-12"
+              />
+              {searchQuery && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={clearSearch}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 hover:bg-white/10 text-white/70 hover:text-cyan-400"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
           </div>
           {searchQuery && (
-            <div className="mt-2 text-sm text-muted-foreground">
+            <div className="mt-3 text-sm text-cyan-300/80">
               Found {filteredTasks.length} task{filteredTasks.length !== 1 ? 's' : ''} matching "{searchQuery}"
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      {/* Tasks List */}
+      {/* Enhanced Empty/No Results State */}
       {Object.keys(groupedTasks).length === 0 ? (
-        <Card>
-          <CardContent className="text-center py-8 text-muted-foreground">
-            {searchQuery ? (
-              <div>
-                <p>No tasks found matching your search criteria.</p>
-                <Button variant="outline" onClick={clearSearch} className="mt-2">
-                  Clear search
-                </Button>
+        <div className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden">
+          {/* Electric Particles Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
+          <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+
+          <div className="relative p-12">
+            <div className="text-center">
+              <div className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-8 inline-block">
+                {searchQuery ? (
+                  <div>
+                    <Search className="mx-auto h-16 w-16 text-cyan-400/60 mb-4" />
+                    <p className="text-white/80 text-lg mb-4">No tasks found matching your search criteria.</p>
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/40 to-blue-500/40 rounded-xl blur-sm"></div>
+                      <Button 
+                        variant="outline" 
+                        onClick={clearSearch} 
+                        className="relative bg-white/10 backdrop-blur-md border border-white/30 hover:border-cyan-400/50 text-white hover:text-cyan-300 transition-all duration-300 hover:scale-105"
+                      >
+                        Clear search
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <ListTodo className="mx-auto h-16 w-16 text-cyan-400/60 mb-4" />
+                    <p className="text-white/80 text-lg">No tasks found matching the selected filters.</p>
+                  </div>
+                )}
               </div>
-            ) : (
-              <p>No tasks found matching the selected filters.</p>
-            )}
-          </CardContent>
-        </Card>
+            </div>
+          </div>
+        </div>
       ) : (
         Object.entries(groupedTasks).map(([deptName, deptTasks]) => (
-          <Card key={deptName}>
-            <CardHeader>
-              <CardTitle>
-                {deptName} Tasks 
-                <Badge variant="secondary" className="ml-2">
-                  {deptTasks.length}
-                </Badge>
-              </CardTitle>
-              <CardDescription>Tasks assigned to the {deptName} department</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Title</TableHead>
-                      <TableHead>Assignee</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Priority</TableHead>
-                      <TableHead>Due Date</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {deptTasks.map((task) => (
-                      <TableRow key={task._id}>
-                        <TableCell>
-                          <div>
-                            <div className="font-medium">{task.title}</div>
-                            {task.description && (
-                              <div className="text-sm text-muted-foreground truncate max-w-xs">
-                                {task.description}
-                              </div>
-                            )}
-                          </div>
-                        </TableCell>
-                        <TableCell>{task.assignee?.name || "Unassigned"}</TableCell>
-                        <TableCell>
-                          <Badge className={getStatusColor(task.status)}>{task.status}</Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Badge className={getPriorityColor(task.priority)}>{task.priority}</Badge>
-                        </TableCell>
-                        <TableCell>
-                          {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : "No date"}
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" className="h-8 w-8 p-0">
-                                <span className="sr-only">Open menu</span>
-                                <MoreHorizontal className="h-4 w-4" />
-                              </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent
-                              align="end"
-                              className="bg-white border border-gray-200 shadow-lg rounded-md"
-                            >
-                              <DropdownMenuLabel className="font-medium text-gray-900">
-                                Actions
-                              </DropdownMenuLabel>
-                              <DropdownMenuItem
-                                onClick={() => handleViewTask(task)}
-                                className="text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                              >
-                                <Eye className="mr-2 h-4 w-4" />
-                                View details
-                              </DropdownMenuItem>
-                              <DropdownMenuItem
-                                onClick={() => handleEditTask(task)}
-                                className="text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                              >
-                                <Edit className="mr-2 h-4 w-4" />
-                                Edit task
-                              </DropdownMenuItem>
-                              <DropdownMenuSeparator className="bg-gray-200" />
-                              <DropdownMenuItem
-                                className="text-red-600 hover:bg-red-50 hover:text-red-700"
-                                onClick={() => handleDeleteTask(task._id)}
-                                disabled={isDeleting}
-                              >
-                                <Trash className="mr-2 h-4 w-4" />
-                                Delete task
-                              </DropdownMenuItem>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+          <div key={deptName} className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden group hover:border-cyan-400/30 transition-all duration-300">
+            {/* Electric Particles Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
+            <div className="absolute top-1/4 right-1/4 w-28 h-28 bg-cyan-400/20 rounded-full blur-3xl animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute bottom-1/3 left-1/3 w-20 h-20 bg-blue-500/20 rounded-full blur-2xl animate-pulse animation-delay-1000 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <div className="relative">
+              {/* Enhanced Header */}
+              <div className="p-6 border-b border-white/10">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
+                      {deptName} Tasks
+                    </h3>
+                    <p className="text-white/70 mt-1">Tasks assigned to the {deptName} department</p>
+                  </div>
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-blue-500/30 rounded-xl blur-sm"></div>
+                    <div className="relative backdrop-blur-md bg-white/10 border border-white/20 rounded-xl px-3 py-2">
+                      <span className="text-cyan-300 font-semibold">{deptTasks.length}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </CardContent>
-          </Card>
+
+              {/* Enhanced Table */}
+              <div className="p-6">
+                <div className="overflow-x-auto">
+                  <div className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-xl">
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="border-white/10 hover:bg-white/5">
+                          <TableHead className="text-cyan-300 font-semibold">Title</TableHead>
+                          <TableHead className="text-cyan-300 font-semibold">Assignee</TableHead>
+                          <TableHead className="text-cyan-300 font-semibold">Status</TableHead>
+                          <TableHead className="text-cyan-300 font-semibold">Priority</TableHead>
+                          <TableHead className="text-cyan-300 font-semibold">Due Date</TableHead>
+                          <TableHead className="text-cyan-300 font-semibold text-right">Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {deptTasks.map((task) => (
+                          <TableRow key={task._id} className="border-white/10 hover:bg-white/10 transition-colors duration-300">
+                            <TableCell>
+                              <div>
+                                <div className="font-medium text-white">{task.title}</div>
+                                {task.description && (
+                                  <div className="text-sm text-white/60 truncate max-w-xs">
+                                    {task.description}
+                                  </div>
+                                )}
+                              </div>
+                            </TableCell>
+                            <TableCell className="text-white/80">{task.assignee?.name || "Unassigned"}</TableCell>
+                            <TableCell>
+                              <Badge className={getStatusColor(task.status)}>{task.status}</Badge>
+                            </TableCell>
+                            <TableCell>
+                              <Badge className={getPriorityColor(task.priority)}>{task.priority}</Badge>
+                            </TableCell>
+                            <TableCell className="text-white/80">
+                              {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : "No date"}
+                            </TableCell>
+                            <TableCell className="text-right">
+                              <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                  <Button variant="ghost" className="h-8 w-8 p-0 text-white/70 hover:text-cyan-400 hover:bg-white/10">
+                                    <span className="sr-only">Open menu</span>
+                                    <MoreHorizontal className="h-4 w-4" />
+                                  </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent
+                                  align="end"
+                                  className="backdrop-blur-xl bg-black/80 border border-white/20 shadow-2xl rounded-xl"
+                                >
+                                  <DropdownMenuLabel className="font-medium text-cyan-300">
+                                    Actions
+                                  </DropdownMenuLabel>
+                                  <DropdownMenuItem
+                                    onClick={() => handleViewTask(task)}
+                                    className="text-white/80 hover:bg-white/10 hover:text-cyan-300 focus:bg-white/10 focus:text-cyan-300"
+                                  >
+                                    <Eye className="mr-2 h-4 w-4" />
+                                    View details
+                                  </DropdownMenuItem>
+                                  <DropdownMenuItem
+                                    onClick={() => handleEditTask(task)}
+                                    className="text-white/80 hover:bg-white/10 hover:text-cyan-300 focus:bg-white/10 focus:text-cyan-300"
+                                  >
+                                    <Edit className="mr-2 h-4 w-4" />
+                                    Edit task
+                                  </DropdownMenuItem>
+                                  <DropdownMenuSeparator className="bg-white/20" />
+                                  <DropdownMenuItem
+                                    className="text-red-400 hover:bg-red-500/20 hover:text-red-300 focus:bg-red-500/20 focus:text-red-300"
+                                    onClick={() => handleDeleteTask(task._id)}
+                                    disabled={isDeleting}
+                                  >
+                                    <Trash className="mr-2 h-4 w-4" />
+                                    Delete task
+                                  </DropdownMenuItem>
+                                </DropdownMenuContent>
+                              </DropdownMenu>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         ))
       )}
       {selectedTask && (
