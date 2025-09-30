@@ -15,7 +15,7 @@ export function TasksHeader() {
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyan-400/10 to-transparent rounded-3xl"></div>
       
       {/* Main Header Card */}
-      <div className="relative backdrop-blur-xl bg-black/30 border border-white/20 rounded-3xl shadow-2xl hover:shadow-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 p-8">
+      <div className="relative backdrop-blur-xl bg-black/5 border border-white/10 rounded-3xl shadow-2xl hover:shadow-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 p-8">
         {/* Electric Particles */}
         <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
           <div className="absolute top-4 right-6 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-75"></div>

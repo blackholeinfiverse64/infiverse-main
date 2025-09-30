@@ -54,7 +54,7 @@ export function TaskFilters({ onFilterChange }) {
   }
 
   return (
-    <div className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden">
+    <div className="relative backdrop-blur-xl bg-black/5 border border-white/10 rounded-2xl overflow-hidden">
       {/* Electric Particles Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
       <div className="absolute top-1/4 right-1/4 w-20 h-20 bg-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
@@ -65,7 +65,7 @@ export function TaskFilters({ onFilterChange }) {
         <div className="flex items-center gap-3 mb-6">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-xl blur-sm"></div>
-            <div className="relative backdrop-blur-md bg-white/10 border border-white/20 rounded-xl p-3">
+                              <div className="relative backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-3">
               <Filter className="h-5 w-5 text-cyan-300" />
             </div>
           </div>

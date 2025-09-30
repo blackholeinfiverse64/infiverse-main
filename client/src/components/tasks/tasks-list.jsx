@@ -521,7 +521,7 @@ export function TasksList({ filters }) {
         </div>
       ) : (
         Object.entries(groupedTasks).map(([deptName, deptTasks]) => (
-          <div key={deptName} className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden group hover:border-cyan-400/30 transition-all duration-300">
+          <div key={deptName} className="relative backdrop-blur-xl bg-black/5 border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-400/30 transition-all duration-300">
             {/* Electric Particles Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
             <div className="absolute top-1/4 right-1/4 w-28 h-28 bg-cyan-400/20 rounded-full blur-3xl animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
