@@ -142,20 +142,27 @@ function Dashboard() {
   }
 
   return (
-    <div className={`min-h-screen bg-black space-y-8 font-poppins transition-all duration-700 ${
+    <div className={`min-h-screen bg-black space-y-8 font-poppins transition-all duration-700 relative overflow-hidden ${
       isHidden 
         ? 'ml-0 p-4 md:p-6 lg:p-8' 
         : 'ml-80 p-4 md:p-6 lg:p-8'
     }`}>
+      {/* Enhanced Black Universe Background with More Moving Particles at 135 degrees */}
+      <div className="fixed inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+      <div className="fixed inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+      <div className="fixed inset-0 universe-particles-large-135 opacity-25 pointer-events-none"></div>
+      <div className="fixed inset-0 universe-particles-extra-135 opacity-20 pointer-events-none"></div>
+      <div className="fixed inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+      <div className="fixed inset-0 universe-particles-huge-135 opacity-15 pointer-events-none"></div>
       <div className="w-full max-w-none">
-        {/* Enhanced Header with Glassmorphism */}
+        {/* Enhanced Header with Universe Background */}
         <div className="relative mb-8">
-          {/* Electric Background Effects */}
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-blue-500/30 to-purple-600/20 rounded-3xl blur-xl"></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-500/10 to-transparent rounded-3xl"></div>
-          
-          {/* Main Header Card */}
-          <div className="relative backdrop-blur-xl bg-black/40 border border-white/20 rounded-3xl shadow-2xl hover:shadow-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 p-8">
+          {/* Main Header Card - Black Universe with Moving Particles */}
+          <div className="relative backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/40 p-8 bg-black overflow-hidden">
+            {/* Universe Particles inside Header Card */}
+            <div className="absolute inset-0 universe-particles-135 opacity-30 pointer-events-none"></div>
+            <div className="absolute inset-0 universe-particles-medium-135 opacity-25 pointer-events-none"></div>
+            <div className="absolute inset-0 universe-particles-large-135 opacity-20 pointer-events-none"></div>
             {/* Electric Particles */}
             <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
               <div className="absolute top-4 left-8 w-2 h-2 bg-cyan-400 rounded-full opacity-75"></div>
@@ -328,12 +335,12 @@ function Dashboard() {
           
           {/* Department Progress Section */}
           <div className="relative group">
-            {/* Electric Background Effects */}
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-blue-500/15 to-purple-600/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyan-400/10 to-transparent rounded-2xl animate-electric-flow"></div>
-            
-            {/* Main Card */}
-            <div className="relative backdrop-blur-xl bg-black/30 border border-white/20 rounded-2xl shadow-2xl hover:shadow-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 hover:scale-[1.02] p-6 h-full">
+            {/* Main Card - Black Universe with Moving Particles */}
+            <div className="relative backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/40 hover:scale-[1.02] p-6 h-full bg-black overflow-hidden">
+              {/* Universe Particles inside Department Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-25 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-20 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-large-135 opacity-15 pointer-events-none"></div>
               {/* Electric Particles */}
               <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
                 <div className="absolute top-3 right-4 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
@@ -371,12 +378,12 @@ function Dashboard() {
 
           {/* Tasks Overview Section */}
           <div className="relative group">
-            {/* Electric Background Effects */}
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-blue-500/15 to-purple-600/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyan-400/10 to-transparent rounded-2xl animate-electric-flow"></div>
-            
-            {/* Main Card */}
-            <div className="relative backdrop-blur-xl bg-black/30 border border-white/20 rounded-2xl shadow-2xl hover:shadow-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 hover:scale-[1.02] p-6 h-full">
+            {/* Main Card - Black Universe with Moving Particles */}
+            <div className="relative backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/40 hover:scale-[1.02] p-6 h-full bg-black overflow-hidden">
+              {/* Universe Particles inside Tasks Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-25 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-20 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-large-135 opacity-15 pointer-events-none"></div>
               {/* Electric Particles */}
               <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
                 <div className="absolute top-4 left-4 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
@@ -414,12 +421,12 @@ function Dashboard() {
 
           {/* AI Insights Section */}
           <div className="relative group">
-            {/* Electric Background Effects */}
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-blue-500/15 to-purple-600/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyan-400/10 to-transparent rounded-2xl animate-electric-flow"></div>
-            
-            {/* Main Card */}
-            <div className="relative backdrop-blur-xl bg-black/30 border border-white/20 rounded-2xl shadow-2xl hover:shadow-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 hover:scale-[1.02] p-6 h-full">
+            {/* Main Card - Black Universe with Moving Particles */}
+            <div className="relative backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/40 hover:scale-[1.02] p-6 h-full bg-black overflow-hidden">
+              {/* Universe Particles inside AI Insights Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-25 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-20 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-large-135 opacity-15 pointer-events-none"></div>
               {/* Electric Particles */}
               <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
                 <div className="absolute top-5 right-3 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
