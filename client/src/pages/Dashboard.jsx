@@ -147,28 +147,30 @@ function Dashboard() {
         ? 'ml-0 p-4 md:p-6 lg:p-8' 
         : 'ml-80 p-4 md:p-6 lg:p-8'
     }`}>
-      {/* Enhanced Black Universe Background with More Moving Particles at 135 degrees */}
-      <div className="fixed inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
-      <div className="fixed inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
-      <div className="fixed inset-0 universe-particles-large-135 opacity-25 pointer-events-none"></div>
-      <div className="fixed inset-0 universe-particles-extra-135 opacity-20 pointer-events-none"></div>
-      <div className="fixed inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
-      <div className="fixed inset-0 universe-particles-huge-135 opacity-15 pointer-events-none"></div>
+      {/* Pure Black Universe Background with Enhanced Moving Particles at 135 Degrees */}
+      <div className="fixed inset-0 bg-black z-0"></div>
+      <div className="fixed inset-0 universe-particles-135 opacity-50 pointer-events-none z-1"></div>
+      <div className="fixed inset-0 universe-particles-medium-135 opacity-45 pointer-events-none z-1"></div>
+      <div className="fixed inset-0 universe-particles-large-135 opacity-40 pointer-events-none z-1"></div>
+      <div className="fixed inset-0 universe-particles-extra-135 opacity-35 pointer-events-none z-1"></div>
+      <div className="fixed inset-0 universe-particles-tiny-135 opacity-55 pointer-events-none z-1"></div>
+      <div className="fixed inset-0 universe-particles-huge-135 opacity-30 pointer-events-none z-1"></div>
       <div className="w-full max-w-none">
         {/* Enhanced Header with Universe Background */}
         <div className="relative mb-8">
-          {/* Main Header Card - Black Universe with Moving Particles */}
-          <div className="relative backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/40 p-8 bg-black overflow-hidden">
-            {/* Universe Particles inside Header Card */}
-            <div className="absolute inset-0 universe-particles-135 opacity-30 pointer-events-none"></div>
-            <div className="absolute inset-0 universe-particles-medium-135 opacity-25 pointer-events-none"></div>
-            <div className="absolute inset-0 universe-particles-large-135 opacity-20 pointer-events-none"></div>
-            {/* Electric Particles */}
+          {/* Black Universe Header Card with Enhanced Particles */}
+          <div className="relative backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/30 p-8 bg-black overflow-hidden">
+            {/* Enhanced Universe Particles inside Header Card */}
+            <div className="absolute inset-0 universe-particles-135 opacity-40 pointer-events-none"></div>
+            <div className="absolute inset-0 universe-particles-medium-135 opacity-35 pointer-events-none"></div>
+            <div className="absolute inset-0 universe-particles-large-135 opacity-30 pointer-events-none"></div>
+            <div className="absolute inset-0 universe-particles-tiny-135 opacity-45 pointer-events-none"></div>
+            {/* Floating Universe Particles */}
             <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
-              <div className="absolute top-4 left-8 w-2 h-2 bg-cyan-400 rounded-full opacity-75"></div>
-              <div className="absolute top-12 right-12 w-1 h-1 bg-blue-400 rounded-full opacity-60"></div>
-              <div className="absolute bottom-6 left-16 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-70"></div>
-              <div className="absolute bottom-12 right-8 w-1 h-1 bg-cyan-300 rounded-full opacity-50"></div>
+              <div className="absolute top-4 left-8 w-2 h-2 bg-cyan-400/80 rounded-full opacity-75 animate-pulse"></div>
+              <div className="absolute top-12 right-12 w-1 h-1 bg-blue-400/70 rounded-full opacity-60 animate-ping"></div>
+              <div className="absolute bottom-6 left-16 w-1.5 h-1.5 bg-purple-400/80 rounded-full opacity-70 animate-bounce"></div>
+              <div className="absolute bottom-12 right-8 w-1 h-1 bg-cyan-300/60 rounded-full opacity-50 animate-pulse"></div>
             </div>
 
             <div className={`flex flex-col items-start justify-between relative z-10 transition-all duration-700 ${
@@ -319,33 +321,201 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Stats Cards */}
+        {/* Black Universe Task Stats Cards */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 relative z-10">
-          {/* Total Tasks */}
-          {/* Completed Tasks */}
-          {/* In Progress */}
-          {/* Pending Tasks */}
-          {/* You can copy your existing Card JSX here */}
+          
+          {/* Total Tasks Card */}
+          <div className="relative group">
+            <div className="relative backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/30 hover:scale-[1.02] p-6 bg-black overflow-hidden">
+              {/* Enhanced Universe Particles inside Total Tasks Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+              {/* Floating Universe Particles */}
+              <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                <div className="absolute top-3 right-3 w-1.5 h-1.5 bg-cyan-400/80 rounded-full animate-ping opacity-75"></div>
+                <div className="absolute bottom-3 left-3 w-1 h-1 bg-blue-400/70 rounded-full animate-pulse opacity-60"></div>
+              </div>
+              
+              {/* Card Content */}
+              <div className="relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-cyan-200/80">Total Tasks</p>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                      {stats.totalTasks}
+                    </p>
+                    <div className="flex items-center space-x-1">
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        stats.totalTasksChange >= 0 
+                          ? 'bg-green-500/20 text-green-400' 
+                          : 'bg-red-500/20 text-red-400'
+                      }`}>
+                        {stats.totalTasksChange >= 0 ? '+' : ''}{stats.totalTasksChange}%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 backdrop-blur-md border border-cyan-400/50 rounded-xl flex items-center justify-center">
+                      <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 012-2h2a2 2 0 012 2" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Completed Tasks Card */}
+          <div className="relative group">
+            <div className="relative backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl hover:shadow-green-400/20 transition-all duration-500 hover:border-green-400/30 hover:scale-[1.02] p-6 bg-black overflow-hidden">
+              {/* Enhanced Universe Particles inside Completed Tasks Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+              {/* Floating Universe Particles */}
+              <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                <div className="absolute top-3 right-3 w-1.5 h-1.5 bg-green-400/80 rounded-full animate-ping opacity-75"></div>
+                <div className="absolute bottom-3 left-3 w-1 h-1 bg-emerald-400/70 rounded-full animate-pulse opacity-60"></div>
+              </div>
+              
+              {/* Card Content */}
+              <div className="relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-green-200/80">Completed Tasks</p>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-green-300 to-emerald-400 bg-clip-text text-transparent">
+                      {stats.completedTasks}
+                    </p>
+                    <div className="flex items-center space-x-1">
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        stats.completedTasksChange >= 0 
+                          ? 'bg-green-500/20 text-green-400' 
+                          : 'bg-red-500/20 text-red-400'
+                      }`}>
+                        {stats.completedTasksChange >= 0 ? '+' : ''}{stats.completedTasksChange}%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-400/30 to-emerald-500/30 backdrop-blur-md border border-green-400/50 rounded-xl flex items-center justify-center">
+                      <svg className="w-6 h-6 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* In Progress Tasks Card */}
+          <div className="relative group">
+            <div className="relative backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl hover:shadow-orange-400/20 transition-all duration-500 hover:border-orange-400/30 hover:scale-[1.02] p-6 bg-black overflow-hidden">
+              {/* Enhanced Universe Particles inside In Progress Tasks Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+              {/* Floating Universe Particles */}
+              <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                <div className="absolute top-3 right-3 w-1.5 h-1.5 bg-orange-400/80 rounded-full animate-ping opacity-75"></div>
+                <div className="absolute bottom-3 left-3 w-1 h-1 bg-yellow-400/70 rounded-full animate-pulse opacity-60"></div>
+              </div>
+              
+              {/* Card Content */}
+              <div className="relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-orange-200/80">In Progress</p>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-orange-300 to-yellow-400 bg-clip-text text-transparent">
+                      {stats.inProgressTasks}
+                    </p>
+                    <div className="flex items-center space-x-1">
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        stats.inProgressTasksChange >= 0 
+                          ? 'bg-green-500/20 text-green-400' 
+                          : 'bg-red-500/20 text-red-400'
+                      }`}>
+                        {stats.inProgressTasksChange >= 0 ? '+' : ''}{stats.inProgressTasksChange}%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400/30 to-yellow-500/30 backdrop-blur-md border border-orange-400/50 rounded-xl flex items-center justify-center">
+                      <svg className="w-6 h-6 text-orange-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Pending Tasks Card */}
+          <div className="relative group">
+            <div className="relative backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl hover:shadow-purple-400/20 transition-all duration-500 hover:border-purple-400/30 hover:scale-[1.02] p-6 bg-black overflow-hidden">
+              {/* Enhanced Universe Particles inside Pending Tasks Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+              {/* Floating Universe Particles */}
+              <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                <div className="absolute top-3 right-3 w-1.5 h-1.5 bg-purple-400/80 rounded-full animate-ping opacity-75"></div>
+                <div className="absolute bottom-3 left-3 w-1 h-1 bg-pink-400/70 rounded-full animate-pulse opacity-60"></div>
+              </div>
+              
+              {/* Card Content */}
+              <div className="relative z-10">
+                <div className="flex items-center justify-between">
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-purple-200/80">Pending Tasks</p>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-purple-300 to-pink-400 bg-clip-text text-transparent">
+                      {stats.pendingTasks}
+                    </p>
+                    <div className="flex items-center space-x-1">
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        stats.pendingTasksChange >= 0 
+                          ? 'bg-green-500/20 text-green-400' 
+                          : 'bg-red-500/20 text-red-400'
+                      }`}>
+                        {stats.pendingTasksChange >= 0 ? '+' : ''}{stats.pendingTasksChange}%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <div className="w-12 h-12 bg-gradient-to-br from-purple-400/30 to-pink-500/30 backdrop-blur-md border border-purple-400/50 rounded-xl flex items-center justify-center">
+                      <svg className="w-6 h-6 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Enhanced Dashboard Components with Glassmorphism */}
-        <div className={`gap-8 relative z-10 transition-all duration-500 ${
+        <div className={`gap-8 relative z-10 transition-all duration-500 mt-12 ${
           isHidden ? 'grid grid-cols-1 lg:grid-cols-3' : 'grid grid-cols-1 xl:grid-cols-3'
         }`}>
           
           {/* Department Progress Section */}
           <div className="relative group">
-            {/* Main Card - Black Universe with Moving Particles */}
-            <div className="relative backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/40 hover:scale-[1.02] p-6 h-full bg-black overflow-hidden">
-              {/* Universe Particles inside Department Card */}
-              <div className="absolute inset-0 universe-particles-135 opacity-25 pointer-events-none"></div>
-              <div className="absolute inset-0 universe-particles-medium-135 opacity-20 pointer-events-none"></div>
-              <div className="absolute inset-0 universe-particles-large-135 opacity-15 pointer-events-none"></div>
-              {/* Electric Particles */}
+            {/* Black Universe Department Card */}
+            <div className="relative backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/30 hover:scale-[1.02] p-6 h-full bg-black overflow-hidden">
+              {/* Enhanced Universe Particles inside Department Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-large-135 opacity-25 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+              {/* Floating Universe Particles */}
               <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
-                <div className="absolute top-3 right-4 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
-                <div className="absolute bottom-4 left-6 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
-                <div className="absolute top-8 left-8 w-1 h-1 bg-purple-400 rounded-full animate-bounce opacity-70"></div>
+                <div className="absolute top-3 right-4 w-1.5 h-1.5 bg-cyan-400/80 rounded-full animate-ping opacity-75"></div>
+                <div className="absolute bottom-4 left-6 w-1 h-1 bg-blue-400/70 rounded-full animate-pulse opacity-60"></div>
+                <div className="absolute top-8 left-8 w-1 h-1 bg-purple-400/80 rounded-full animate-bounce opacity-70"></div>
               </div>
               
               {/* Section Header */}
@@ -378,17 +548,18 @@ function Dashboard() {
 
           {/* Tasks Overview Section */}
           <div className="relative group">
-            {/* Main Card - Black Universe with Moving Particles */}
-            <div className="relative backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/40 hover:scale-[1.02] p-6 h-full bg-black overflow-hidden">
-              {/* Universe Particles inside Tasks Card */}
-              <div className="absolute inset-0 universe-particles-135 opacity-25 pointer-events-none"></div>
-              <div className="absolute inset-0 universe-particles-medium-135 opacity-20 pointer-events-none"></div>
-              <div className="absolute inset-0 universe-particles-large-135 opacity-15 pointer-events-none"></div>
-              {/* Electric Particles */}
+            {/* Black Universe Tasks Card */}
+            <div className="relative backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/30 hover:scale-[1.02] p-6 h-full bg-black overflow-hidden">
+              {/* Enhanced Universe Particles inside Tasks Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-large-135 opacity-25 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+              {/* Floating Universe Particles */}
               <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
-                <div className="absolute top-4 left-4 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
-                <div className="absolute bottom-3 right-5 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
-                <div className="absolute top-12 right-8 w-1 h-1 bg-purple-400 rounded-full animate-bounce opacity-70"></div>
+                <div className="absolute top-4 left-4 w-1.5 h-1.5 bg-cyan-400/80 rounded-full animate-ping opacity-75"></div>
+                <div className="absolute bottom-3 right-5 w-1 h-1 bg-blue-400/70 rounded-full animate-pulse opacity-60"></div>
+                <div className="absolute top-12 right-8 w-1 h-1 bg-purple-400/80 rounded-full animate-bounce opacity-70"></div>
               </div>
               
               {/* Section Header */}
@@ -421,17 +592,18 @@ function Dashboard() {
 
           {/* AI Insights Section */}
           <div className="relative group">
-            {/* Main Card - Black Universe with Moving Particles */}
-            <div className="relative backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/40 hover:scale-[1.02] p-6 h-full bg-black overflow-hidden">
-              {/* Universe Particles inside AI Insights Card */}
-              <div className="absolute inset-0 universe-particles-135 opacity-25 pointer-events-none"></div>
-              <div className="absolute inset-0 universe-particles-medium-135 opacity-20 pointer-events-none"></div>
-              <div className="absolute inset-0 universe-particles-large-135 opacity-15 pointer-events-none"></div>
-              {/* Electric Particles */}
+            {/* Black Universe AI Insights Card */}
+            <div className="relative backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/30 hover:scale-[1.02] p-6 h-full bg-black overflow-hidden">
+              {/* Enhanced Universe Particles inside AI Insights Card */}
+              <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-large-135 opacity-25 pointer-events-none"></div>
+              <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+              {/* Floating Universe Particles */}
               <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
-                <div className="absolute top-5 right-3 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
-                <div className="absolute bottom-5 left-4 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
-                <div className="absolute top-8 left-12 w-1 h-1 bg-purple-400 rounded-full animate-bounce opacity-70"></div>
+                <div className="absolute top-5 right-3 w-1.5 h-1.5 bg-cyan-400/80 rounded-full animate-ping opacity-75"></div>
+                <div className="absolute bottom-5 left-4 w-1 h-1 bg-blue-400/70 rounded-full animate-pulse opacity-60"></div>
+                <div className="absolute top-8 left-12 w-1 h-1 bg-purple-400/80 rounded-full animate-bounce opacity-70"></div>
               </div>
               
               {/* Section Header */}
