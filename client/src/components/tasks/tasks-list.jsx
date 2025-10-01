@@ -375,10 +375,15 @@ export function TasksList({ filters }) {
 
   if (isLoading) {
     return (
-      <div className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden">
-        {/* Electric Particles Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
-        <div className="absolute top-1/3 right-1/4 w-28 h-28 bg-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="relative backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden bg-black shadow-2xl">
+        {/* Enhanced Universe Particles */}
+        <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+        <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+        <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+        {/* Floating Universe Particles */}
+        <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+          <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-cyan-400/80 rounded-full animate-ping opacity-75"></div>
+        </div>
 
         <div className="relative p-8">
           <div className="mb-6">
@@ -404,10 +409,15 @@ export function TasksList({ filters }) {
 
   if (error) {
     return (
-      <div className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden">
-        {/* Electric Particles Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-red-400/10 via-orange-500/10 to-red-600/10"></div>
-        <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-red-400/20 rounded-full blur-2xl animate-pulse"></div>
+      <div className="relative backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden bg-black shadow-2xl">
+        {/* Enhanced Universe Particles */}
+        <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+        <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+        <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+        {/* Floating Universe Particles */}
+        <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-1.5 h-1.5 bg-red-400/80 rounded-full animate-ping opacity-75"></div>
+        </div>
 
         <div className="relative p-8">
           <div className="mb-6">
@@ -440,11 +450,16 @@ export function TasksList({ filters }) {
   return (
     <div className="space-y-6">
       {/* Enhanced Search Bar */}
-      <div className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden">
-        {/* Electric Particles Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
-        <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-20 h-20 bg-blue-500/20 rounded-full blur-xl animate-pulse animation-delay-1000"></div>
+      <div className="relative backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden bg-black shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/30">
+        {/* Enhanced Universe Particles */}
+        <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+        <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+        <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+        {/* Floating Universe Particles */}
+        <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-1.5 h-1.5 bg-cyan-400/80 rounded-full animate-ping opacity-75"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-blue-400/70 rounded-full animate-pulse opacity-60"></div>
+        </div>
 
         <div className="relative p-6">
           <div className="mb-4">
@@ -486,10 +501,15 @@ export function TasksList({ filters }) {
 
       {/* Enhanced Empty/No Results State */}
       {Object.keys(groupedTasks).length === 0 ? (
-        <div className="relative backdrop-blur-xl bg-black/20 border border-white/20 rounded-2xl overflow-hidden">
-          {/* Electric Particles Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
-          <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-purple-400/20 rounded-full blur-2xl animate-pulse"></div>
+        <div className="relative backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden bg-black shadow-2xl">
+          {/* Enhanced Universe Particles */}
+          <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+          <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+          <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+          {/* Floating Universe Particles */}
+          <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+            <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-purple-400/80 rounded-full animate-ping opacity-75"></div>
+          </div>
 
           <div className="relative p-12">
             <div className="text-center">
@@ -521,11 +541,16 @@ export function TasksList({ filters }) {
         </div>
       ) : (
         Object.entries(groupedTasks).map(([deptName, deptTasks]) => (
-          <div key={deptName} className="relative backdrop-blur-xl bg-black/5 border border-white/10 rounded-2xl overflow-hidden group hover:border-cyan-400/30 transition-all duration-300">
-            {/* Electric Particles Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
-            <div className="absolute top-1/4 right-1/4 w-28 h-28 bg-cyan-400/20 rounded-full blur-3xl animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute bottom-1/3 left-1/3 w-20 h-20 bg-blue-500/20 rounded-full blur-2xl animate-pulse animation-delay-1000 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div key={deptName} className="relative backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden bg-black shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/30 group">
+            {/* Enhanced Universe Particles inside Department Task Card */}
+            <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+            <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+            <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+            {/* Floating Universe Particles */}
+            <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+              <div className="absolute top-1/4 right-1/4 w-1.5 h-1.5 bg-cyan-400/80 rounded-full animate-ping opacity-75 group-hover:opacity-100"></div>
+              <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-400/70 rounded-full animate-pulse opacity-60 group-hover:opacity-100"></div>
+            </div>
 
             <div className="relative">
               {/* Enhanced Header */}

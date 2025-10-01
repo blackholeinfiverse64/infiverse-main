@@ -10,17 +10,18 @@ export function TasksHeader() {
 
   return (
     <div className="relative group">
-      {/* Header Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 via-blue-500/15 to-purple-600/20 rounded-3xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyan-400/10 to-transparent rounded-3xl"></div>
-      
-      {/* Main Header Card */}
-      <div className="relative backdrop-blur-xl bg-black/5 border border-white/10 rounded-3xl shadow-2xl hover:shadow-cyan-400/20 transition-all duration-500 hover:border-cyan-400/40 p-8">
-        {/* Electric Particles */}
+      {/* Black Universe Header Card */}
+      <div className="relative backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/30 p-8 bg-black overflow-hidden">
+        {/* Enhanced Universe Particles inside Header Card */}
+        <div className="absolute inset-0 universe-particles-135 opacity-40 pointer-events-none"></div>
+        <div className="absolute inset-0 universe-particles-medium-135 opacity-35 pointer-events-none"></div>
+        <div className="absolute inset-0 universe-particles-large-135 opacity-30 pointer-events-none"></div>
+        <div className="absolute inset-0 universe-particles-tiny-135 opacity-45 pointer-events-none"></div>
+        {/* Floating Universe Particles */}
         <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
-          <div className="absolute top-4 right-6 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
-          <div className="absolute bottom-6 left-8 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
-          <div className="absolute top-1/2 right-12 w-1.5 h-1.5 bg-purple-400 rounded-full animate-bounce opacity-50"></div>
+          <div className="absolute top-4 right-6 w-2 h-2 bg-cyan-400/80 rounded-full animate-ping opacity-75"></div>
+          <div className="absolute bottom-6 left-8 w-1 h-1 bg-blue-400/70 rounded-full animate-pulse opacity-60"></div>
+          <div className="absolute top-1/2 right-12 w-1.5 h-1.5 bg-purple-400/80 rounded-full animate-bounce opacity-50"></div>
         </div>
 
         <div className="relative flex items-center justify-between">

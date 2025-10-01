@@ -54,18 +54,24 @@ export function TaskFilters({ onFilterChange }) {
   }
 
   return (
-    <div className="relative backdrop-blur-xl bg-black/5 border border-white/10 rounded-2xl overflow-hidden">
-      {/* Electric Particles Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-blue-500/10 to-purple-600/10"></div>
-      <div className="absolute top-1/4 right-1/4 w-20 h-20 bg-cyan-400/20 rounded-full blur-2xl animate-pulse"></div>
-      <div className="absolute bottom-1/3 left-1/3 w-16 h-16 bg-blue-500/20 rounded-full blur-xl animate-pulse animation-delay-1000"></div>
+    <div className="relative backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden bg-black shadow-2xl hover:shadow-blue-400/20 transition-all duration-500 hover:border-blue-400/30">
+      {/* Enhanced Universe Particles inside Filters Card */}
+      <div className="absolute inset-0 universe-particles-135 opacity-35 pointer-events-none"></div>
+      <div className="absolute inset-0 universe-particles-medium-135 opacity-30 pointer-events-none"></div>
+      <div className="absolute inset-0 universe-particles-tiny-135 opacity-40 pointer-events-none"></div>
+      {/* Floating Universe Particles */}
+      <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+        <div className="absolute top-1/4 right-1/4 w-1.5 h-1.5 bg-cyan-400/80 rounded-full animate-ping opacity-75"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-400/70 rounded-full animate-pulse opacity-60"></div>
+        <div className="absolute top-1/2 left-1/4 w-1 h-1 bg-purple-400/80 rounded-full animate-bounce opacity-70"></div>
+      </div>
 
       <div className="relative p-6">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-xl blur-sm"></div>
-                              <div className="relative backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-3">
+            <div className="relative backdrop-blur-md border border-white/10 rounded-xl p-3 bg-black">
               <Filter className="h-5 w-5 text-cyan-300" />
             </div>
           </div>

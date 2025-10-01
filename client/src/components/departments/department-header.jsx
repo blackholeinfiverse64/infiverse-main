@@ -9,14 +9,6 @@ export function DepartmentHeader() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Electric Particles Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-4 right-8 w-2 h-2 bg-cyan-400 rounded-full animate-ping opacity-60"></div>
-        <div className="absolute bottom-6 left-12 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-40"></div>
-        <div className="absolute top-8 left-1/3 w-1.5 h-1.5 bg-purple-400 rounded-full animate-bounce opacity-50"></div>
-        <div className="absolute bottom-4 right-1/4 w-1 h-1 bg-cyan-300 rounded-full animate-ping opacity-70"></div>
-      </div>
-
       <div className="flex items-center justify-between relative">
         {/* Header Content */}
         <div className="flex items-center gap-4">

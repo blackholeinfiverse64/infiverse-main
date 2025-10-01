@@ -587,9 +587,12 @@ export function DependencyGraph() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-full">
-        <div className="flex flex-col items-center gap-2">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          <p>Loading dependency graph...</p>
+        <div className="flex flex-col items-center gap-4">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/40 to-blue-500/40 rounded-full blur-lg animate-pulse"></div>
+            <Loader2 className="relative h-12 w-12 animate-spin text-cyan-400" />
+          </div>
+          <p className="text-white/80 text-lg">Loading dependency graph...</p>
         </div>
       </div>
     )
@@ -598,34 +601,42 @@ export function DependencyGraph() {
   if (error) {
     return (
       <div className="flex justify-center items-center h-full">
-        <div className="text-center text-red-500">
-          <p>Error loading dependency graph: {error}</p>
-          <button className="mt-4 px-4 py-2 bg-primary text-white rounded-md" onClick={() => window.location.reload()}>
-            Try Again
-          </button>
+        <div className="text-center">
+          <div className="backdrop-blur-sm bg-red-500/10 border border-red-400/20 rounded-2xl p-8 inline-block">
+            <p className="text-red-300 text-lg mb-4">Error loading dependency graph: {error}</p>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-red-400/40 to-orange-500/40 rounded-xl blur-sm"></div>
+              <button 
+                className="relative bg-white/10 backdrop-blur-md border border-white/30 hover:border-red-400/50 text-white hover:text-red-300 px-4 py-2 rounded-md transition-all duration-300 hover:scale-105" 
+                onClick={() => window.location.reload()}
+              >
+                Try Again
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4">
+    <div className="flex flex-col lg:flex-row gap-4 h-full">
       <div className="flex-1">
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="w-full sm:w-auto">
-              <label htmlFor="department" className="block text-sm font-medium mb-1">
+              <label htmlFor="department" className="block text-sm font-medium mb-1 text-cyan-300">
                 Department:
               </label>
               <select
                 id="department"
                 value={selectedDepartment}
                 onChange={(e) => setSelectedDepartment(e.target.value)}
-                className="w-full sm:w-auto border border-gray-300 rounded-md px-2 py-1 text-sm"
+                className="w-full sm:w-auto bg-white/5 border border-white/20 rounded-md px-2 py-1 text-sm text-white focus:border-cyan-400/50 focus:ring-cyan-400/30"
               >
-                <option value="All">All</option>
+                <option value="All" className="bg-black text-white">All</option>
                 {departments.map((dept) => (
-                  <option key={dept._id} value={dept.name}>
+                  <option key={dept._id} value={dept.name} className="bg-black text-white">
                     {dept.name}
                   </option>
                 ))}

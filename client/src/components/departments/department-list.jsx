@@ -154,27 +154,11 @@ export function DepartmentList({ onDepartmentSelect }) {
 
   if (isLoading) {
     return (
-      <div className="relative backdrop-blur-sm bg-white/5 border border-white/10 rounded-xl p-8 overflow-hidden">
-        {/* Animated star particles background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-4 right-6 w-1 h-1 bg-white/40 rounded-full animate-pulse opacity-70"
-               style={{animationDelay: '0s', animationDuration: '2.5s'}}></div>
-          <div className="absolute top-12 right-16 w-0.5 h-0.5 bg-white/30 rounded-full animate-ping opacity-50"
-               style={{animationDelay: '1s', animationDuration: '3s'}}></div>
-          <div className="absolute bottom-8 left-8 w-1 h-1 bg-white/35 rounded-full animate-bounce opacity-60"
-               style={{animationDelay: '0.5s', animationDuration: '3.5s'}}></div>
-          <div className="absolute bottom-16 left-20 w-0.5 h-0.5 bg-white/25 rounded-full animate-pulse opacity-40"
-               style={{animationDelay: '1.5s', animationDuration: '4s'}}></div>
-          <div className="absolute top-16 left-1/3 w-1 h-1 bg-white/45 rounded-full animate-ping opacity-65"
-               style={{animationDelay: '2s', animationDuration: '2.8s'}}></div>
-          <div className="absolute top-8 left-1/2 w-0.5 h-0.5 bg-white/30 rounded-full animate-bounce opacity-50"
-               style={{animationDelay: '2.5s', animationDuration: '3.2s'}}></div>
-        </div>
-        
+      <div className="relative overflow-hidden">
         <div className="relative flex flex-col items-center justify-center py-12">
           <div className="relative">
-            <div className="absolute inset-0 bg-white/20 rounded-full blur-sm animate-pulse"></div>
-            <Loader2 className="relative h-8 w-8 animate-spin text-white" />
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/40 to-blue-500/40 rounded-full blur-lg animate-pulse"></div>
+            <Loader2 className="relative h-12 w-12 animate-spin text-cyan-400" />
           </div>
           <h3 className="text-lg font-semibold text-white mt-4">Loading Departments</h3>
           <p className="text-white/70 text-sm mt-1">Fetching department data...</p>
@@ -185,27 +169,23 @@ export function DepartmentList({ onDepartmentSelect }) {
 
   if (error) {
     return (
-      <div className="relative backdrop-blur-sm bg-white/5 border border-red-500/20 rounded-xl p-8 overflow-hidden">
-        {/* Electric particles background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-4 right-6 w-2 h-2 bg-red-400 rounded-full animate-ping opacity-60"></div>
-          <div className="absolute bottom-8 left-8 w-1 h-1 bg-orange-400 rounded-full animate-pulse opacity-40"></div>
-        </div>
-        
-        <div className="relative text-center">
-          <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-md border border-red-400/30 rounded-full flex items-center justify-center">
-            <span className="text-2xl">⚠️</span>
-          </div>
-          <h3 className="text-lg font-semibold text-white mb-2">Error Loading Departments</h3>
-          <p className="text-red-300 text-sm mb-4">{error}</p>
-          <div className="relative">
-            <div className="absolute inset-0 bg-white/20 rounded-lg blur-sm"></div>
-            <button 
-              onClick={() => window.location.reload()}
-              className="relative px-4 py-2 bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105 backdrop-blur-md rounded-lg"
-            >
-              Try Again
-            </button>
+      <div className="relative overflow-hidden">
+        <div className="relative text-center py-12">
+          <div className="backdrop-blur-sm bg-red-500/10 border border-red-400/20 rounded-2xl p-8 inline-block">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-md border border-red-400/30 rounded-full flex items-center justify-center">
+              <span className="text-2xl">⚠️</span>
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">Error Loading Departments</h3>
+            <p className="text-red-300 text-sm mb-4">{error}</p>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-red-400/40 to-orange-500/40 rounded-lg blur-sm"></div>
+              <button 
+                onClick={() => window.location.reload()}
+                className="relative px-4 py-2 bg-white/10 backdrop-blur-md border border-white/30 hover:border-red-400/50 text-white hover:text-red-300 transition-all duration-300 hover:scale-105 rounded-lg"
+              >
+                Try Again
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -213,53 +193,7 @@ export function DepartmentList({ onDepartmentSelect }) {
   }
 
   return (
-    <div className="relative backdrop-blur-sm bg-white/5 border border-white/10 rounded-xl overflow-hidden">
-      {/* Animated star field background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large bright stars */}
-        <div className="absolute top-6 right-8 w-1 h-1 bg-white/45 rounded-full animate-pulse opacity-80"
-             style={{animationDelay: '0s', animationDuration: '3s'}}></div>
-        <div className="absolute top-16 right-20 w-1.5 h-1.5 bg-white/50 rounded-full animate-ping opacity-75"
-             style={{animationDelay: '1s', animationDuration: '4s'}}></div>
-        <div className="absolute top-24 right-32 w-0.5 h-0.5 bg-white/35 rounded-full animate-bounce opacity-65"
-             style={{animationDelay: '2s', animationDuration: '2.5s'}}></div>
-        
-        {/* Medium stars */}
-        <div className="absolute bottom-12 left-12 w-1 h-1 bg-white/40 rounded-full animate-ping opacity-70"
-             style={{animationDelay: '0.5s', animationDuration: '3.5s'}}></div>
-        <div className="absolute bottom-24 left-24 w-0.5 h-0.5 bg-white/30 rounded-full animate-pulse opacity-55"
-             style={{animationDelay: '1.5s', animationDuration: '4.5s'}}></div>
-        <div className="absolute bottom-36 left-36 w-1 h-1 bg-white/45 rounded-full animate-bounce opacity-75"
-             style={{animationDelay: '2.5s', animationDuration: '3s'}}></div>
-        
-        {/* Small twinkling stars */}
-        <div className="absolute top-20 left-1/4 w-0.5 h-0.5 bg-white/25 rounded-full animate-ping opacity-45"
-             style={{animationDelay: '0.8s', animationDuration: '2s'}}></div>
-        <div className="absolute top-32 left-1/3 w-1 h-1 bg-white/35 rounded-full animate-pulse opacity-60"
-             style={{animationDelay: '1.8s', animationDuration: '3.2s'}}></div>
-        <div className="absolute top-44 left-1/2 w-0.5 h-0.5 bg-white/30 rounded-full animate-bounce opacity-50"
-             style={{animationDelay: '2.8s', animationDuration: '2.8s'}}></div>
-        
-        {/* Scattered constellation stars */}
-        <div className="absolute bottom-6 right-1/3 w-0.5 h-0.5 bg-white/20 rounded-full animate-ping opacity-40"
-             style={{animationDelay: '0.3s', animationDuration: '5s'}}></div>
-        <div className="absolute bottom-18 right-1/2 w-1 h-1 bg-white/35 rounded-full animate-pulse opacity-55"
-             style={{animationDelay: '1.3s', animationDuration: '4s'}}></div>
-        <div className="absolute bottom-30 right-2/3 w-0.5 h-0.5 bg-white/25 rounded-full animate-bounce opacity-45"
-             style={{animationDelay: '2.3s', animationDuration: '3.5s'}}></div>
-        
-        {/* Corner accent stars */}
-        <div className="absolute top-8 left-8 w-1 h-1 bg-white/40 rounded-full animate-ping opacity-65"
-             style={{animationDelay: '3.3s', animationDuration: '2.5s'}}></div>
-        <div className="absolute top-2 right-2 w-0.5 h-0.5 bg-white/30 rounded-full animate-pulse opacity-50"
-             style={{animationDelay: '4.3s', animationDuration: '3.8s'}}></div>
-        <div className="absolute bottom-2 left-2 w-0.5 h-0.5 bg-white/25 rounded-full animate-bounce opacity-45"
-             style={{animationDelay: '5.3s', animationDuration: '4.2s'}}></div>
-        <div className="absolute bottom-8 right-8 w-1 h-1 bg-white/35 rounded-full animate-ping opacity-60"
-             style={{animationDelay: '6.3s', animationDuration: '3.6s'}}></div>
-      </div>
-
-      <div className="relative p-6">
+    <div className="relative p-6">
         {/* Enhanced Header with View Toggle */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-4">
@@ -333,7 +267,7 @@ export function DepartmentList({ onDepartmentSelect }) {
                     <div 
                       key={departmentId}
                       onClick={() => onDepartmentSelect && onDepartmentSelect(department)}
-                      className="relative backdrop-blur-sm bg-white/5 border border-white/10 rounded-xl p-6 overflow-hidden group hover:bg-white/10 transition-all duration-300 cursor-pointer hover:scale-[1.02] hover:border-cyan-400/30"
+                      className="relative backdrop-blur-lg bg-transparent border border-white/20 rounded-xl p-6 overflow-hidden group hover:bg-white/5 transition-all duration-300 cursor-pointer hover:scale-[1.02] hover:border-cyan-400/50"
                     >
                       {/* Electric particle effect on hover */}
                       <div className="absolute top-2 right-2 w-8 h-8 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -483,7 +417,7 @@ export function DepartmentList({ onDepartmentSelect }) {
                     <div 
                       key={departmentId}
                       onClick={() => onDepartmentSelect && onDepartmentSelect(department)}
-                      className="relative backdrop-blur-sm bg-white/5 border border-white/10 rounded-xl p-4 overflow-hidden group hover:bg-white/10 transition-all duration-300 cursor-pointer hover:border-cyan-400/30"
+                      className="relative backdrop-blur-lg bg-transparent border border-white/20 rounded-xl p-4 overflow-hidden group hover:bg-white/5 transition-all duration-300 cursor-pointer hover:border-cyan-400/50"
                     >
                       {/* Electric particle effect on hover */}
                       <div className="absolute top-2 right-2 w-6 h-6 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -573,7 +507,6 @@ export function DepartmentList({ onDepartmentSelect }) {
             )}
           </div>
         )}
-      </div>
     </div>
   )
 }
